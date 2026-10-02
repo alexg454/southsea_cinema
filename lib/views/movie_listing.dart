@@ -15,7 +15,19 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(),
+      body: Container(
+        color: cinemaBackground,
+        padding: EdgeInsets.all(50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 25,
+          children: [
+            Text(
+            'Spiderman: Into the Spider Verse (2018) (PG)'
+            )
+          ],
+        )
+      ),
     );
   }
 }
