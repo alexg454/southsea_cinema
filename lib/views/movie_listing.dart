@@ -23,7 +23,19 @@ class MovieListing extends StatelessWidget {
           spacing: 25,
           children: [
             Text(
-            'Spiderman: Into the Spider Verse (2018) (PG)'
+            'Spiderman: Into the Spider Verse (2018) (PG)',
+            ),
+            Text(
+              'Southsea Cinema Room',
+            ),
+            Text(
+              'Thursday 22 October 2026, 18:00 - ends at 19:57',
+            ),
+            Text(
+              'Please note that Discounts / Membership Benefits will be applied once you have selected your tickets',
+            ),
+            Text(
+              'Select Quantities (Up to 5 in total)'
             )
           ],
         )
