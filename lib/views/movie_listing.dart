@@ -24,18 +24,23 @@ class MovieListing extends StatelessWidget {
           children: [
             Text(
             'Spiderman: Into the Spider Verse (2018) (PG)',
+            style: listingTitleStyle
             ),
             Text(
               'Southsea Cinema Room',
+              style: listingDesciptionStyle,
             ),
             Text(
               'Thursday 22 October 2026, 18:00 - ends at 19:57',
+              style: listingDesciptionStyle
             ),
             Text(
               'Please note that Discounts / Membership Benefits will be applied once you have selected your tickets',
+              style: listingDesciptionStyle,
             ),
             Text(
-              'Select Quantities (Up to 5 in total)'
+              'Select Quantities (Up to 5 in total)',
+              style: listingDesciptionStyle,
             )
           ],
         )
