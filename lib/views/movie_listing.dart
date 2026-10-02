@@ -26,6 +26,7 @@ class MovieListing extends StatelessWidget {
             'Spiderman: Into the Spider Verse (2018) (PG)',
             style: listingTitleStyle
             ),
+            const SizedBox(height: 10),
             Text(
               'Southsea Cinema Room',
               style: listingDesciptionStyle,
@@ -34,6 +35,7 @@ class MovieListing extends StatelessWidget {
               'Thursday 22 October 2026, 18:00 - ends at 19:57',
               style: listingDesciptionStyle
             ),
+            const SizedBox(height: 10),
             Text(
               'Please note that Discounts / Membership Benefits will be applied once you have selected your tickets',
               style: listingDesciptionStyle,
