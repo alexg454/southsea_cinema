@@ -53,10 +53,15 @@ class _MovieListing extends State<MovieListing> {
             ),
             const SizedBox(height: 10),
             Text(
-              'Ticekts',
+              'Tickets',
               style: cinemaHeaderStyle
             ),
-            // DropdownMenu(dropdownMenuEntries: dropdownMenuEntries)
+            Row(
+              spacing: 25,
+              children: <Widget>[
+
+              ],
+            )
           ],
         )
       ),
