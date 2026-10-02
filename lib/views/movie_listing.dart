@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
-class MovieListing extends StatelessWidget {
+class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
 
+  @override
+  State<StatefulWidget> createState() {
+    return _MovieListing();
+  }
+}
+
+class _MovieListing extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +50,13 @@ class MovieListing extends StatelessWidget {
             Text(
               'Select Quantities (Up to 5 in total)',
               style: listingDesciptionStyle,
-            )
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Ticekts',
+              style: cinemaHeaderStyle
+            ),
+            // DropdownMenu(dropdownMenuEntries: dropdownMenuEntries)
           ],
         )
       ),
