@@ -13,8 +13,9 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListing extends State<MovieListing> {
   double _totalPrice = 7.50;
-  int _ticketsSelected = 0;
+  int _ticketsSelected = 1;
   bool _addedToBasket = false;
+  String _confirmText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -91,12 +92,23 @@ class _MovieListing extends State<MovieListing> {
               ],
             ),
             FilledButton(
-              onPressed: () => _addedToBasket = true,
+              onPressed: _addToBasket,
               child: Text('Add to order')
+            ),
+            Visibility(
+              visible: _addedToBasket,
+              child: Text(_confirmText, style: listingDesciptionStyle)
             )
           ],
         )
       ),
     );
+  }
+
+  void _addToBasket() {
+    setState(() {
+      _addedToBasket = true;
+      _confirmText = 'Added $_ticketsSelected ${_ticketsSelected == 1 ? 'ticket' : 'tickets'} to basket!';
+    });
   }
 }
