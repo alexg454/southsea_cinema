@@ -18,11 +18,11 @@ const TextStyle cinemaHeaderStyle = TextStyle(
 );
 
 const TextStyle listingTitleStyle = TextStyle(
-  color: Colors.white,
+  color: cinemaFontWhite,
   fontSize: 40
 );
 
 const TextStyle listingDesciptionStyle = TextStyle(
-  color: Colors.white,
+  color: cinemaFontWhite,
   fontSize: 18
 );
