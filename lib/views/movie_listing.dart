@@ -59,7 +59,16 @@ class _MovieListing extends State<MovieListing> {
             Row(
               spacing: 25,
               children: <Widget>[
-
+                DropdownMenu<int>(
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 0, label: '0'),
+                    DropdownMenuEntry(value: 1, label: '1'),
+                    DropdownMenuEntry(value: 2, label: '2'),
+                    DropdownMenuEntry(value: 3, label: '3'),
+                    DropdownMenuEntry(value: 4, label: '4'),
+                    DropdownMenuEntry(value: 5, label: '5')
+                  ],
+                )
               ],
             )
           ],
