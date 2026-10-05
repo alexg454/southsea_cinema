@@ -12,6 +12,8 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListing extends State<MovieListing> {
+double _totalPrice = 7.50;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,14 +62,25 @@ class _MovieListing extends State<MovieListing> {
               spacing: 25,
               children: <Widget>[
                 DropdownMenu<int>(
+                  initialSelection: 1,
+
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() => _totalPrice = value * 7.50);
+                    }
+                  },
+
                   dropdownMenuEntries: [
-                    DropdownMenuEntry(value: 0, label: '0'),
                     DropdownMenuEntry(value: 1, label: '1'),
                     DropdownMenuEntry(value: 2, label: '2'),
                     DropdownMenuEntry(value: 3, label: '3'),
                     DropdownMenuEntry(value: 4, label: '4'),
                     DropdownMenuEntry(value: 5, label: '5')
                   ],
+                ),
+                Text(
+                  'Adult (£${_totalPrice.toStringAsFixed(2)})',
+                  style: listingDesciptionStyle
                 )
               ],
             )
