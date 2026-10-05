@@ -12,7 +12,9 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListing extends State<MovieListing> {
-double _totalPrice = 7.50;
+  double _totalPrice = 7.50;
+  int _ticketsSelected = 0;
+  bool _addedToBasket = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,11 @@ double _totalPrice = 7.50;
 
                   onSelected: (int? value) {
                     if (value != null) {
-                      setState(() => _totalPrice = value * 7.50);
+                      setState(() {
+                        _totalPrice = value * 7.50;
+                        _ticketsSelected = value;
+                        }
+                      );
                     }
                   },
 
@@ -83,6 +89,10 @@ double _totalPrice = 7.50;
                   style: listingDesciptionStyle
                 )
               ],
+            ),
+            FilledButton(
+              onPressed: () => _addedToBasket = true,
+              child: Text('Add to order')
             )
           ],
         )
