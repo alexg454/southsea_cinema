@@ -10,18 +10,22 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      color: cinemaSurface,
+      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 10, 
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  movie.name,
-                  style: listingTitleStyle,
+                Flexible(
+                  child: Text(
+                    movie.name,
+                    style: listingTitleStyle,
+                  ),
                 ),
                 const SizedBox(width: 16),
                 Text(
@@ -35,14 +39,16 @@ class MovieCard extends StatelessWidget {
               children: [
                 Image.asset(
                 movie.imagePath,
-                width: 80,
-                height: 160,
+                width: 120,
+                height: 200,
                 fit: BoxFit.cover,
                 ),
                 const SizedBox(width: 16),
-                Text(
-                  movie.description,
-                  style: listingDesciptionStyle,
+                Expanded(
+                  child: Text(
+                    movie.description,
+                    style: listingDesciptionStyle,
+                  ),
                 )
               ],
             ),
