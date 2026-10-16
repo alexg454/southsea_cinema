@@ -17,7 +17,7 @@ class MovieCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 10, 
+          spacing: 10,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,10 +39,10 @@ class MovieCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                movie.imagePath,
-                width: 120,
-                height: 200,
-                fit: BoxFit.cover,
+                  movie.imagePath,
+                  width: 120,
+                  height: 200,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -65,18 +65,17 @@ class MovieCard extends StatelessWidget {
                   style: listingDesciptionStyle,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MovieListing(movie: movie);
-                        },
-                      ),
-                    );
-                  },
-                  child: const Text('BOOK NOW')
-                ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MovieListing(movie: movie);
+                          },
+                        ),
+                      );
+                    },
+                    child: const Text('BOOK NOW')),
               ],
             ),
           ],

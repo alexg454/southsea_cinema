@@ -24,7 +24,7 @@ const TextStyle listingTitleStyle = TextStyle(
 
 const TextStyle ageRatingStyle = TextStyle(
   color: cinemaFontMuted,
-  fontSize: 15,
+  fontSize: 18,
 );
 
 const TextStyle listingDesciptionStyle = TextStyle(
