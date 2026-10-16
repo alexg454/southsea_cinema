@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  
+  const MovieListing({
+    super.key,
+    required this.movie,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -31,15 +37,26 @@ class _MovieListing extends State<MovieListing> {
         builder: (context, constraints){
             return Container(
               color: cinemaBackground,
-              padding: EdgeInsets.all(50),
+              padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 15,
                 children: [
-                  Text(
-                  'Spiderman: Into the Spider Verse (2018) (PG)',
-                  style: listingTitleStyle
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                      widget.movie.name,
+                      style: listingTitleStyle
+                      ),
+                      const SizedBox(width: 16),
+                      Text(
+                        '(${widget.movie.ageRating})',
+                        style: ageRatingStyle,
+                      )
+                    ],
                   ),
+                  const SizedBox(height: 10),
                   const SizedBox(height: 10),
                   Text(
                     'Southsea Cinema Room',
