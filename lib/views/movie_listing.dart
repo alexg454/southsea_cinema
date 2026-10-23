@@ -140,7 +140,7 @@ class _MovieListing extends State<MovieListing> {
                           onSelected: (int? value) {
                             if (value != null) {
                               setState(() {
-                                _totalPrice = value * 7.50;
+                                _totalPrice = value * widget.movie.price;
                                 _ticketsSelected = value;
                                 }
                               );
@@ -155,7 +155,7 @@ class _MovieListing extends State<MovieListing> {
                           ],
                         ),
                         Text(
-                          'Adult (£${_totalPrice.toStringAsFixed(2)})',
+                          '${widget.movie.formattedPrice} x $_ticketsSelected',
                           style: listingDesciptionStyle
                           )
                         ],

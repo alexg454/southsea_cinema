@@ -53,9 +53,18 @@ class MovieCard extends StatelessWidget {
                 )
               ],
             ),
-            Text(
-              'BOOK TICKETS',
-              style: listingDesciptionStyle,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'BOOK TICKETS',
+                  style: listingDesciptionStyle,
+                ),
+                Text(
+                  movie.formattedPrice,
+                  style: listingDesciptionStyle,
+                ),
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

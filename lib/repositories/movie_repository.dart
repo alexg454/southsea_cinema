@@ -9,6 +9,7 @@ class MovieRepository {
         ageRating: 'PG',
         description:
             'After gaining superpowers from a spider bite, Miles Morales protects the city as Spider-Man. Soon, he meets alternate versions of himself and gets embroiled in an epic battle to save the multiverse.',
+        price: 5.99,
         imagePath: 'assets/images/spider-man_itsv.jpg',
       ),
       Movie(
@@ -17,6 +18,7 @@ class MovieRepository {
         ageRating: '15',
         description:
             'When a few objects that can be manipulated and used as weapons in the future fall into the wrong hands, a CIA operative, known as the Protagonist, must save the world.',
+        price: 5.99,
         imagePath: 'assets/images/tenet.jpg',
       )
     ];
