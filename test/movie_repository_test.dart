@@ -30,7 +30,7 @@ void main() {
       expect(tenet.imagePath, isNotNull);
     });
 
-    test('getSandwichById returns matching sandwich when id exists', () {
+    test('getMovieById returns matching sandwich when id exists', () {
       final MovieRepository repository = MovieRepository();
       final Movie? movie = repository.getMovieById('spider-man_itsv');
 
@@ -40,11 +40,44 @@ void main() {
       expect(movie?.price, 5.99);
     });
 
-    test('getSandwichById returns null when id does not exist', () {
+    test('getMovieById returns null when id does not exist', () {
       final MovieRepository repository = MovieRepository();
       final Movie? movie = repository.getMovieById('non-existent');
 
       expect(movie, isNull);
+    });
+
+    test('getMoviesByPrice returns matching movie(s) when price exists', () {
+      final MovieRepository repository = MovieRepository();
+      final List<Movie>? movies = repository.getMoviesByPrice(5.99);
+
+      expect(movies, isNotNull);
+      expect(movies?[0].id, 'spider-man_itsv');
+      expect(movies?[1].id, 'tenet');
+    });
+
+    test('getMoviesByPrice returns null when price does not exist', () {
+      final MovieRepository repository = MovieRepository();
+      final List<Movie>? movies = repository.getMoviesByPrice(5.99);
+
+      expect(movies, isNotNull);
+      expect(movies?[0].id, 'spider-man_itsv');
+      expect(movies?[1].id, 'tenet');
+    });
+
+    test('getMoviesByAgeRating returns matching movie(s) when age rating exists', () {
+      final MovieRepository repository = MovieRepository();
+      final List<Movie>? movies = repository.getMoviesByAgeRating('15');
+
+      expect(movies, isNotNull);
+      expect(movies?[0].id, 'tenet');
+    });
+
+    test('getMoviesByAgeRating returns null when age rating does not exist', () {
+      final MovieRepository repository = MovieRepository();
+      final List<Movie>? movies = repository.getMoviesByAgeRating('non-existent');
+
+      expect(movies, isNull);
     });
   });
 }
