@@ -23,4 +23,37 @@ class MovieRepository {
       )
     ];
   }
+
+  Movie? getMovieById(String id) {
+    for (final movie in getMovies()) {
+      if (movie.id == id) {
+        return movie;
+      }
+    }
+    return null;
+  }
+
+  List<Movie>? getMoviesByPrice(double price) {
+    List<Movie> movies = [];
+    for (final movie in getMovies()) {
+      if (movie.price == price) {
+        movies.add(movie);
+      }
+    }
+
+    if (movies.isEmpty) return null;
+    return movies;
+  }
+
+  List<Movie>? getMoviesByAgeRating(String ageRating) {
+    List<Movie> movies = [];
+    for (final movie in getMovies()) {
+      if (movie.ageRating == ageRating) {
+        movies.add(movie);
+      }
+    }
+
+    if (movies.isEmpty) return null;
+    return movies;
+  }
 }
