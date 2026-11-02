@@ -164,7 +164,7 @@ class _MovieListing extends State<MovieListing> {
                   })
                 ),
                 const SizedBox(height: 10),
-                FilledButton(
+                ElevatedButton(
                   onPressed: _addToBasket,
                   child: Text('Add to order')
                 ),
