@@ -65,7 +65,9 @@ void main() {
       expect(movies?[1].id, 'tenet');
     });
 
-    test('getMoviesByAgeRating returns matching movie(s) when age rating exists', () {
+    test(
+        'getMoviesByAgeRating returns matching movie(s) when age rating exists',
+        () {
       final MovieRepository repository = MovieRepository();
       final List<Movie>? movies = repository.getMoviesByAgeRating('15');
 
@@ -73,9 +75,11 @@ void main() {
       expect(movies?[0].id, 'tenet');
     });
 
-    test('getMoviesByAgeRating returns null when age rating does not exist', () {
+    test('getMoviesByAgeRating returns null when age rating does not exist',
+        () {
       final MovieRepository repository = MovieRepository();
-      final List<Movie>? movies = repository.getMoviesByAgeRating('non-existent');
+      final List<Movie>? movies =
+          repository.getMoviesByAgeRating('non-existent');
 
       expect(movies, isNull);
     });

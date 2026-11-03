@@ -5,7 +5,7 @@ import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
-  
+
   const MovieListing({
     super.key,
     required this.movie,
@@ -26,16 +26,15 @@ class _MovieListing extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
-      ),
-      drawer: const NavDrawer(),
-      body: SingleChildScrollView(
-        child: 
-        Container(
+        appBar: AppBar(
+          title: const Text(appTitle, style: cinemaHeaderStyle),
+          backgroundColor: cinemaSurface,
+          iconTheme: const IconThemeData(color: cinemaBrand),
+          elevation: 0,
+        ),
+        drawer: const NavDrawer(),
+        body: SingleChildScrollView(
+          child: Container(
             color: cinemaBackground,
             padding: EdgeInsets.all(20),
             child: Column(
@@ -46,10 +45,7 @@ class _MovieListing extends State<MovieListing> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: Text(
-                        widget.movie.name,
-                        style: listingTitleStyle
-                      ),
+                      child: Text(widget.movie.name, style: listingTitleStyle),
                     ),
                     const SizedBox(width: 16),
                     Text(
@@ -63,10 +59,10 @@ class _MovieListing extends State<MovieListing> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                    widget.movie.imagePath,
-                    width: 120,
-                    height: 200,
-                    fit: BoxFit.cover,
+                      widget.movie.imagePath,
+                      width: 120,
+                      height: 200,
+                      fit: BoxFit.cover,
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -82,10 +78,8 @@ class _MovieListing extends State<MovieListing> {
                   'Southsea Cinema Room',
                   style: listingDesciptionStyle,
                 ),
-                Text(
-                  'Thursday 22 October 2026, 18:00',
-                  style: listingDesciptionStyle
-                ),
+                Text('Thursday 22 October 2026, 18:00',
+                    style: listingDesciptionStyle),
                 const SizedBox(height: 10),
                 Text(
                   'Please note that Discounts / Membership Benefits will be applied once you have selected your tickets',
@@ -96,12 +90,10 @@ class _MovieListing extends State<MovieListing> {
                   style: listingDesciptionStyle,
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  'Tickets',
-                  style: cinemaHeaderStyle
-                ),
+                Text('Tickets', style: cinemaHeaderStyle),
                 LayoutBuilder(builder: ((context, constraints) {
-                  if (constraints.maxWidth < 400) { // Doesn't consider padding - 400 = width of container, not page
+                  if (constraints.maxWidth < 400) {
+                    // Doesn't consider padding - 400 = width of container, not page
                     return Column(
                       spacing: 20,
                       children: <Widget>[
@@ -112,8 +104,7 @@ class _MovieListing extends State<MovieListing> {
                               setState(() {
                                 _totalPrice = value * 7.50;
                                 _ticketsSelected = value;
-                                }
-                              );
+                              });
                             }
                           },
                           dropdownMenuEntries: [
@@ -124,14 +115,11 @@ class _MovieListing extends State<MovieListing> {
                             DropdownMenuEntry(value: 5, label: '5')
                           ],
                         ),
-                        Text(
-                          'Adult (£${_totalPrice.toStringAsFixed(2)})',
-                          style: listingDesciptionStyle
-                        )
+                        Text('Adult (£${_totalPrice.toStringAsFixed(2)})',
+                            style: listingDesciptionStyle)
                       ],
                     );
-                  }
-                  else {
+                  } else {
                     return Row(
                       spacing: 20,
                       children: <Widget>[
@@ -142,8 +130,7 @@ class _MovieListing extends State<MovieListing> {
                               setState(() {
                                 _totalPrice = value * widget.movie.price;
                                 _ticketsSelected = value;
-                                }
-                              );
+                              });
                             }
                           },
                           dropdownMenuEntries: [
@@ -155,34 +142,29 @@ class _MovieListing extends State<MovieListing> {
                           ],
                         ),
                         Text(
-                          '${widget.movie.formattedPrice} x $_ticketsSelected',
-                          style: listingDesciptionStyle
-                          )
-                        ],
-                      );
-                    }
-                  })
-                ),
+                            '${widget.movie.formattedPrice} x $_ticketsSelected',
+                            style: listingDesciptionStyle)
+                      ],
+                    );
+                  }
+                })),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: _addToBasket,
-                  child: Text('Add to order')
-                ),
+                    onPressed: _addToBasket, child: Text('Add to order')),
                 Visibility(
-                  visible: _addedToBasket,
-                  child: Text(_confirmText, style: listingDesciptionStyle)
-                ),
+                    visible: _addedToBasket,
+                    child: Text(_confirmText, style: listingDesciptionStyle)),
               ],
             ),
           ),
-        )
-      );
+        ));
   }
 
   void _addToBasket() {
     setState(() {
       _addedToBasket = true;
-      _confirmText = 'Added $_ticketsSelected ${_ticketsSelected == 1 ? 'ticket' : 'tickets'} to basket!';
+      _confirmText =
+          'Added $_ticketsSelected ${_ticketsSelected == 1 ? 'ticket' : 'tickets'} to basket!';
     });
   }
 }

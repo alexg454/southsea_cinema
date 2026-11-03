@@ -17,17 +17,12 @@ const TextStyle cinemaHeaderStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const TextStyle listingTitleStyle = TextStyle(
-  color: cinemaBrand,
-  fontSize: 30
-);
+const TextStyle listingTitleStyle = TextStyle(color: cinemaBrand, fontSize: 30);
 
 const TextStyle ageRatingStyle = TextStyle(
   color: cinemaFontMuted,
   fontSize: 18,
 );
 
-const TextStyle listingDesciptionStyle = TextStyle(
-  color: cinemaFontWhite,
-  fontSize: 18
-);
+const TextStyle listingDesciptionStyle =
+    TextStyle(color: cinemaFontWhite, fontSize: 18);

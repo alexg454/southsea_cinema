@@ -54,6 +54,7 @@ void main() {
 
       await tester.dragUntilVisible(
           find.text('Add to order'), find.byType(MovieListing), Offset(0, -10));
+      await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       await tester.pump();
 
@@ -69,22 +70,50 @@ void main() {
       expect(find.byType(MovieListing), findsOneWidget);
       expect(find.text('Spider-Man: Into the Spider Verse'), findsOneWidget);
 
-      await tester.dragUntilVisible(
-          find.byType(DropdownMenu<int>), find.byType(MovieListing), Offset(0, -10));
+      await tester.dragUntilVisible(find.byType(DropdownMenu<int>),
+          find.byType(MovieListing), Offset(0, -10));
+      await tester.pumpAndSettle();
       await tester.tap(find.byType(DropdownMenu<int>));
       await tester.pump();
 
       await tester.dragUntilVisible(
           find.text('3').last, find.byType(MovieListing), Offset(0, -10));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('3').last);
       await tester.pump();
 
       await tester.dragUntilVisible(
           find.text('Add to order'), find.byType(MovieListing), Offset(0, -10));
+      await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       await tester.pump();
 
       expect(find.text('Added 3 tickets to basket!'), findsOneWidget);
+    });
+
+    testWidgets('Test navigating to one movie, then back to another',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.tap(find.text('BOOK NOW').first);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MovieListing), findsOneWidget);
+      expect(find.text('Spider-Man: Into the Spider Verse'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Open navigation menu'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Home'));
+      await tester.pumpAndSettle();
+
+      await tester.dragUntilVisible(find.text('BOOK NOW').last,
+          find.byType(MovieListing), Offset(0, -10));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('BOOK NOW').last);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MovieListing), findsOneWidget);
+      expect(find.text('Tenet'), findsOneWidget);
     });
   });
 }
