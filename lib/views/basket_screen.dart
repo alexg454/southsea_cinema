@@ -121,18 +121,26 @@ class _BasketScreenState extends State<BasketScreen> {
     children.add(const SizedBox(height: 24));
 
     children.add(
-      SizedBox(
-        width: double.infinity,
-        child: PrimaryButton(
-          label: 'Checkout',
-          onPressed: () {
-            setState(() {
-              basket.clear();
-              _confirmationMessage = 'Thanks, your tickets will be sent to your email';
-            });
-          }
-        ),
-      )
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          PrimaryButton(
+            label: 'BUY MORE', 
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            }
+          ),
+          PrimaryButton(
+            label: 'CHECKOUT',
+            onPressed: () {
+              setState(() {
+                basket.clear();
+                _confirmationMessage = 'Thanks, your tickets will be sent to your email';
+              });
+            }
+          ),
+        ],
+      ),
     );
 
     if (_confirmationMessage.isNotEmpty) {
