@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/basket_item.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
@@ -20,7 +22,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListing extends State<MovieListing> {
   double _totalPrice = 7.50;
-  int _ticketsSelected = 1;
+  int _quantity = 1;
   bool _addedToBasket = false;
   String _confirmText = '';
 
@@ -101,7 +103,7 @@ class _MovieListing extends State<MovieListing> {
                             if (value != null) {
                               setState(() {
                                 _totalPrice = value * 7.50;
-                                _ticketsSelected = value;
+                                _quantity = value;
                               });
                             }
                           },
@@ -127,7 +129,7 @@ class _MovieListing extends State<MovieListing> {
                             if (value != null) {
                               setState(() {
                                 _totalPrice = value * widget.movie.price;
-                                _ticketsSelected = value;
+                                _quantity = value;
                               });
                             }
                           },
@@ -140,7 +142,7 @@ class _MovieListing extends State<MovieListing> {
                           ],
                         ),
                         Text(
-                            '${widget.movie.formattedPrice} x $_ticketsSelected',
+                            '${widget.movie.formattedPrice} x $_quantity',
                             style: listingDesciptionStyle)
                       ],
                     );
@@ -161,10 +163,18 @@ class _MovieListing extends State<MovieListing> {
   }
 
   void _addToBasket() {
+    if (_quantity > 0) {
+        final BasketItem item = BasketItem(
+          movie:widget.movie,
+          quantity: _quantity
+        );
+        BasketRepository.instance.addItem(item);
+      }
+    
     setState(() {
       _addedToBasket = true;
       _confirmText =
-          'Added $_ticketsSelected ${_ticketsSelected == 1 ? 'ticket' : 'tickets'} to basket!';
+        'Added $_quantity ${_quantity == 1 ? 'ticket' : 'tickets'} to basket!';
     });
   }
 }
