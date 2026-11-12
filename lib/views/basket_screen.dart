@@ -99,8 +99,23 @@ class _BasketScreenState extends State<BasketScreen> {
 
     children.add(
       _buildTotalRow(
-        'Total to pay', 
+        'Subtotal', 
         '£${basket.getSubtotal().toStringAsFixed(2)}')
+    );
+
+    children.add(
+      _buildTotalRow(
+        'Service Charge',
+        '£${basket.getServiceCharge().toStringAsFixed(2)}',
+      ),
+    );
+
+    children.add(
+      _buildTotalRow(
+        'Total Due',
+        '£${basket.getTotalDue().toStringAsFixed(2)}',
+        emphasise: true,
+      ),
     );
 
     children.add(const SizedBox(height: 24));
