@@ -41,8 +41,19 @@ class BasketRepository {
     return sum;
   }
 
+  double getServiceCharge() {
+    if (_items.isEmpty) {
+      return 0.0;
+    }
+    return 4.00;
+  }
+
+  double getTotalDue() {
+    return getSubtotal() + getServiceCharge();
+  }
+
   void clear() {
     _items.clear();
   }
-  
+
 }
