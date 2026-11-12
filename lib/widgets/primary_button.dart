@@ -6,6 +6,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const PrimaryButton({
+    super.key,
     required this.label,
     required this.onPressed,
   });
