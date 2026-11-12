@@ -46,14 +46,20 @@ class _BasketScreenState extends State<BasketScreen> {
               ],
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.delete_outline, color: Colors.red),
-            onPressed: () {
-              setState(() {
-                basket.removeItem(index);
-              }); 
-            },
-          ),
+          Ink(
+            decoration: const ShapeDecoration(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              color: cinemaBrand
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.delete_outline, color: Colors.white),
+              onPressed: () {
+                setState(() {
+                  basket.removeItem(index);
+                }); 
+              },
+            ),
+          )
         ],
       ),
     );
