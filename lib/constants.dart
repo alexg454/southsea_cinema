@@ -19,6 +19,12 @@ const TextStyle cinemaHeaderStyle = TextStyle(
 
 const TextStyle listingTitleStyle = TextStyle(color: cinemaBrand, fontSize: 30);
 
+const TextStyle settingHeaderStyle = TextStyle(
+  fontSize: 14,
+  color: cinemaFontMuted,
+  fontWeight: FontWeight.bold,
+);
+
 const TextStyle ageRatingStyle = TextStyle(
   color: cinemaFontMuted,
   fontSize: 18,
