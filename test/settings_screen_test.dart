@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:southsea_cinema/views/settings_screen.dart';
+
+void main() {
+  testWidgets('SettingsScreen displays form fields and switches', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
+
+    expect(find.text('My Settings'), findsOneWidget);
+    expect(find.byType(TextField), findsNWidgets(4));
+    expect(find.byType(Switch), findsOneWidget);
+    expect(find.text('SAVE SETTINGS'), findsOneWidget);
+  });
+
+  testWidgets('Toggling switch and saving settings updates state', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
+
+    final Finder nameField = find.widgetWithText(TextField, 'Full name');
+    final Finder addressField =
+        find.widgetWithText(TextField, 'Home address');
+    final Finder emailField = find.widgetWithText(TextField, 'Email');
+    final Finder patronNumberField = find.widgetWithText(TextField, 'Patron number');
+
+    await tester.enterText(nameField, 'Alex Smith');
+    await tester.enterText(addressField, '10 Elm Road, Portsmouth');
+    await tester.enterText(emailField, 'alex@example.com');
+    await tester.enterText(patronNumberField, '1234');
+
+    final Finder switchFinder = find.byType(Switch);
+    await tester.dragUntilVisible(switchFinder, find.byType(SettingsScreen), Offset(0, -10));
+
+    expect(tester.widget<Switch>(switchFinder).value, isFalse);
+    await tester.tap(switchFinder);
+    await tester.pump();
+
+    expect(tester.widget<Switch>(switchFinder).value, isTrue);
+
+    await tester.tap(find.text('SAVE SETTINGS'));
+    await tester.pump();
+
+    expect(find.text('Settings saved for Alex Smith'), findsOneWidget);
+  });
+}
