@@ -35,25 +35,38 @@ class _HomeViewState extends State<HomeView> {
         _loading = false;
       });
     } catch (error) {
-      
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _errorMessage = 'Could not load the menu: $error';
+        _loading = false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final MovieRepository repository = MovieRepository();
-    final List<Movie> movies = repository.getMovies();
+    final Widget body;
+    if (_loading) {
+      body = const Center(child: CircularProgressIndicator());
+    } else if (_errorMessage.isNotEmpty) {
+      body = Center(child: Text(_errorMessage));
+    } else {
+      body = ListView.builder(
+        itemCount: _movies.length,
+        itemBuilder: (BuildContext context, int index) {
+          return MovieCard(movie: _movies[index]);
+        },
+      );
+    }
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle, style: cinemaHeaderStyle),
-        ),
-        drawer: const NavDrawer(),
-        body: ListView.builder(
-          itemCount: movies.length,
-          itemBuilder: (context, index) {
-            return MovieCard(movie: movies[index]);
-          },
-        ));
+      appBar: AppBar(
+        title: const Text(appTitle, style: cinemaHeaderStyle),
+      ),
+      drawer: const NavDrawer(),
+      body: body
+    );
   }
 }
