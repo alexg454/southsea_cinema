@@ -4,12 +4,12 @@ import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  // testWidgets('Basic app loading test', (WidgetTester tester) async {
-  //   await tester.pumpWidget(const SouthseaCinemaApp());
-  //   expect(find.text('Welcome to Southsea Cinema'), findsOneWidget);
-  // });
+  setUp(() {
+    rootBundle.clear();
+  });
 
   group('SouthseaCinemaApp widget tests', () {
     testWidgets('display home page with title and movie cards',
@@ -17,6 +17,7 @@ void main() {
       await tester.pumpWidget(const MaterialApp(
         home: Scaffold(body: HomeView()),
       ));
+      await tester.pumpAndSettle();
 
       expect(find.text(appTitle), findsOneWidget);
     });
@@ -25,12 +26,15 @@ void main() {
   group('SouthseaCinemaApp smoke tests', () {
     testWidgets('displays HomeView as home', (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.pumpAndSettle();
+
       expect(find.byType(HomeView), findsOneWidget);
       expect(find.text(appTitle), findsOneWidget);
     });
 
     testWidgets('displays movie cards correctly', (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.pumpAndSettle();
 
       expect(find.text('Spider-Man: Into the Spider Verse'), findsOneWidget);
       expect(find.text('£5.99'), findsNWidgets(2));
@@ -42,6 +46,7 @@ void main() {
         'tapping BOOK NOW navigates to MovieListing with selected movie and tickets are added to basket',
         (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.pumpAndSettle();
 
       await tester.tap(find.text('BOOK NOW').first);
       await tester.pumpAndSettle();
@@ -64,6 +69,8 @@ void main() {
     testWidgets('DropdownMenu selection works to change number of tickets',
         (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.pumpAndSettle();
+
       await tester.tap(find.text('BOOK NOW').first);
       await tester.pumpAndSettle();
 
@@ -94,6 +101,8 @@ void main() {
     testWidgets('Test navigating to one movie, then back to another',
         (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.pumpAndSettle();
+      
       await tester.tap(find.text('BOOK NOW').first);
       await tester.pumpAndSettle();
 
