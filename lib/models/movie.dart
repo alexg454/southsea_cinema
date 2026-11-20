@@ -25,13 +25,12 @@ class Movie {
     final String imagePath = json['imagePath'] as String;
 
     return Movie(
-      id: id,
-      name: name,
-      ageRating: ageRating,
-      description: description,
-      price: price,
-      imagePath: imagePath
-    );
+        id: id,
+        name: name,
+        ageRating: ageRating,
+        description: description,
+        price: price,
+        imagePath: imagePath);
   }
 
   Map<String, dynamic> toJson() {

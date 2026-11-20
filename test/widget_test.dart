@@ -60,8 +60,8 @@ void main() {
       expect(find.byType(DropdownMenu<int>), findsOneWidget);
       expect(find.textContaining('£5.99'), findsOneWidget);
 
-      await tester.dragUntilVisible(
-          find.text('Add to Order'), find.byType(MovieListing), Offset(0, -100));
+      await tester.dragUntilVisible(find.text('Add to Order'),
+          find.byType(MovieListing), Offset(0, -100));
       await tester.pumpAndSettle();
       expect(find.text('Add to Order'), findsOneWidget);
       await tester.tap(find.text('Add to Order'));
@@ -95,8 +95,8 @@ void main() {
       await tester.tap(find.text('3').last);
       await tester.pump();
 
-      await tester.dragUntilVisible(
-          find.text('Add to Order'), find.byType(MovieListing), Offset(0, -100));
+      await tester.dragUntilVisible(find.text('Add to Order'),
+          find.byType(MovieListing), Offset(0, -100));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Add to Order'));
       await tester.pump();
@@ -110,7 +110,7 @@ void main() {
         home: Scaffold(body: HomeView()),
       ));
       await tester.pumpAndSettle();
-      
+
       await tester.tap(find.text('BOOK NOW').first);
       await tester.pumpAndSettle();
 
@@ -133,7 +133,9 @@ void main() {
       expect(find.text('Tenet'), findsOneWidget);
     });
 
-    testWidgets('Test adding tickets from two movies, removing some and checking out', (WidgetTester tester) async {
+    testWidgets(
+        'Test adding tickets from two movies, removing some and checking out',
+        (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
       await tester.pumpAndSettle();
 
@@ -177,13 +179,15 @@ void main() {
       await tester.tap(find.text('My Basket'));
       await tester.pumpAndSettle();
 
-      expect(find.text('1 x Spider-Man: Into the Spider Verse'), findsOneWidget);
+      expect(
+          find.text('1 x Spider-Man: Into the Spider Verse'), findsOneWidget);
       expect(find.text('1 x Tenet'), findsOneWidget);
 
       await tester.tap(find.byIcon(Icons.delete_outline).last);
       await tester.pump();
 
-      expect(find.text('1 x Spider-Man: Into the Spider Verse'), findsOneWidget);
+      expect(
+          find.text('1 x Spider-Man: Into the Spider Verse'), findsOneWidget);
       expect(find.text('1 x Tenet'), findsNothing);
 
       await tester.tap(find.text('CHECKOUT'));

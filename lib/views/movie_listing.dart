@@ -141,21 +141,17 @@ class _MovieListing extends State<MovieListing> {
                             DropdownMenuEntry(value: 5, label: '5')
                           ],
                         ),
-                        Text(
-                            '${widget.movie.formattedPrice} x $_quantity',
+                        Text('${widget.movie.formattedPrice} x $_quantity',
                             style: listingDesciptionStyle)
                       ],
                     );
                   }
                 })),
                 const SizedBox(height: 10),
-                PrimaryButton(
-                  label: 'Add to Order', 
-                  onPressed: _addToBasket
-                ),
+                PrimaryButton(label: 'Add to Order', onPressed: _addToBasket),
                 Visibility(
-                  visible: _addedToBasket,
-                  child: Text(_confirmText, style: listingDesciptionStyle)),
+                    visible: _addedToBasket,
+                    child: Text(_confirmText, style: listingDesciptionStyle)),
               ],
             ),
           ),
@@ -164,17 +160,15 @@ class _MovieListing extends State<MovieListing> {
 
   void _addToBasket() {
     if (_quantity > 0) {
-        final BasketItem item = BasketItem(
-          movie:widget.movie,
-          quantity: _quantity
-        );
-        BasketRepository.instance.addItem(item);
-      }
-    
+      final BasketItem item =
+          BasketItem(movie: widget.movie, quantity: _quantity);
+      BasketRepository.instance.addItem(item);
+    }
+
     setState(() {
       _addedToBasket = true;
       _confirmText =
-        'Added $_quantity ${_quantity == 1 ? 'ticket' : 'tickets'} to basket!';
+          'Added $_quantity ${_quantity == 1 ? 'ticket' : 'tickets'} to basket!';
     });
   }
 }

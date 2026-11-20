@@ -4,13 +4,13 @@ import 'package:southsea_cinema/models/basket_item.dart';
 import 'package:southsea_cinema/repositories/basket_repository.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 
-class BasketScreen extends StatefulWidget{
+class BasketScreen extends StatefulWidget {
   const BasketScreen({super.key});
 
   @override
   State<BasketScreen> createState() {
     return _BasketScreenState();
-  }  
+  }
 }
 
 class _BasketScreenState extends State<BasketScreen> {
@@ -48,15 +48,14 @@ class _BasketScreenState extends State<BasketScreen> {
           ),
           Ink(
             decoration: const ShapeDecoration(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-              color: cinemaBrand
-            ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                color: cinemaBrand),
             child: IconButton(
               icon: const Icon(Icons.delete_outline, color: Colors.white),
               onPressed: () {
                 setState(() {
                   basket.removeItem(index);
-                }); 
+                });
               },
             ),
           )
@@ -97,11 +96,8 @@ class _BasketScreenState extends State<BasketScreen> {
     }
     children.add(const SizedBox(height: 24));
 
-    children.add(
-      _buildTotalRow(
-        'Subtotal', 
-        '£${basket.getSubtotal().toStringAsFixed(2)}')
-    );
+    children.add(_buildTotalRow(
+        'Subtotal', '£${basket.getSubtotal().toStringAsFixed(2)}'));
 
     children.add(
       _buildTotalRow(
@@ -125,20 +121,19 @@ class _BasketScreenState extends State<BasketScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           PrimaryButton(
-            label: 'BUY MORE', 
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }
-          ),
+              label: 'BUY MORE',
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              }),
           PrimaryButton(
-            label: 'CHECKOUT',
-            onPressed: () {
-              setState(() {
-                basket.clear();
-                _confirmationMessage = 'Thanks, your tickets will be sent to your email';
-              });
-            }
-          ),
+              label: 'CHECKOUT',
+              onPressed: () {
+                setState(() {
+                  basket.clear();
+                  _confirmationMessage =
+                      'Thanks, your tickets will be sent to your email';
+                });
+              }),
         ],
       ),
     );
@@ -146,10 +141,8 @@ class _BasketScreenState extends State<BasketScreen> {
     if (_confirmationMessage.isNotEmpty) {
       children.add(const SizedBox(height: 12));
       children.add(
-        Text(
-          _confirmationMessage,
-          style: const TextStyle(fontWeight: FontWeight.bold)
-        ),
+        Text(_confirmationMessage,
+            style: const TextStyle(fontWeight: FontWeight.bold)),
       );
     }
 

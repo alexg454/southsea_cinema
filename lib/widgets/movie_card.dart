@@ -44,11 +44,8 @@ class MovieCard extends StatelessWidget {
                   width: 120,
                   height: 200,
                   fit: BoxFit.cover,
-                  errorBuilder: (
-                    BuildContext context,
-                    Object error,
-                    StackTrace? stackTrace
-                  ) {
+                  errorBuilder: (BuildContext context, Object error,
+                      StackTrace? stackTrace) {
                     return const SizedBox(
                       width: 80,
                       height: 80,
@@ -86,18 +83,17 @@ class MovieCard extends StatelessWidget {
                   style: listingDesciptionStyle,
                 ),
                 PrimaryButton(
-                  label: 'BOOK NOW', 
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MovieListing(movie: movie);
-                        },
-                      ),
-                    );
-                  }
-                ),
+                    label: 'BOOK NOW',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MovieListing(movie: movie);
+                          },
+                        ),
+                      );
+                    }),
               ],
             ),
           ],

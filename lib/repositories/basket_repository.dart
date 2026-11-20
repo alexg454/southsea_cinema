@@ -55,5 +55,4 @@ class BasketRepository {
   void clear() {
     _items.clear();
   }
-
 }

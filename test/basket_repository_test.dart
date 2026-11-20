@@ -16,7 +16,7 @@ const Movie movie2 = Movie(
   id: 'tenet',
   name: 'Tenet',
   ageRating: '15',
-  description:'test description',
+  description: 'test description',
   price: 5.99,
   imagePath: 'assets/images/tenet.jpg',
 );
@@ -37,14 +37,8 @@ void main() {
 
     test('adds items and calculates subtotal correctly', () {
       final BasketRepository basket = BasketRepository.instance;
-      const BasketItem item1 = BasketItem(
-        movie: movie1, 
-        quantity: 3
-      );
-      const BasketItem item2 = BasketItem(
-        movie: movie2, 
-        quantity: 1
-      );
+      const BasketItem item1 = BasketItem(movie: movie1, quantity: 3);
+      const BasketItem item2 = BasketItem(movie: movie2, quantity: 1);
 
       basket.addItem(item1);
       basket.addItem(item2);
@@ -57,10 +51,7 @@ void main() {
 
     test('removes items correctly', () {
       final BasketRepository basket = BasketRepository.instance;
-      const BasketItem item1 = BasketItem(
-        movie: movie1, 
-        quantity: 3
-      );
+      const BasketItem item1 = BasketItem(movie: movie1, quantity: 3);
 
       basket.addItem(item1);
       expect(basket.getItems().length, 1);
@@ -72,10 +63,7 @@ void main() {
 
     test('clears items correctly', () {
       final BasketRepository basket = BasketRepository.instance;
-      const BasketItem item1 = BasketItem(
-        movie: movie1, 
-        quantity: 3
-      );
+      const BasketItem item1 = BasketItem(movie: movie1, quantity: 3);
 
       basket.addItem(item1);
       basket.addItem(item1);
